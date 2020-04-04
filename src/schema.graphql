@@ -1,0 +1,11 @@
+type Query {
+    hello: String!
+    quantity: Int!
+    getUser: User!
+}
+
+# Definning User Custom Type
+type User {
+    name: String!
+    lastname: String!
+}

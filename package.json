@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "built": "babel src -d dist --source-maps",
-    "start": "nodemon src/main.js --exec babel-node",
+    "start": "nodemon src/main.js --ext js, graphql --exec babel-node",
     "serve": "node dist/index.js",
     "clean": "rimraf dist"
   },
