@@ -4,11 +4,25 @@ const Query = {
             return `Hello ${name || 'world'}`
         },
         quantity: () => 2,
-        getUser: () => {
-            return {
-                name: 'Nacho',
-                lastname: 'RM'
+        user: (parent, { id }, context, info) => {
+            const { db } = context
+            if (!id) {
+                return db.users
             }
+
+            return db.users.filter(user => user.id === id)
+        },
+        author: (parent, { id }, { db }, info) => {
+            if (!id) {
+                return db.authors
+            }
+            return db.authors.filter(author => id === author.id)
+        },
+        book: (parent, { id }, { db }, info) => {
+            if (!id) {
+                return db.books
+            }
+            return db.books.filter(book => id === book.id)
         }
     }
 

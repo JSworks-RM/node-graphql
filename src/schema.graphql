@@ -1,11 +1,35 @@
 type Query {
     hello(name: String): String!
     quantity: Int!
-    getUser: User!
+    user(id: ID): [User!]!
+    author(id: ID): [Author!]!
+    book(id: ID): [Book!]!
 }
 
 # Definning User Custom Type
 type User {
+    id: ID!
     name: String!
-    lastname: String!
+    lastName: String!
+}   
+
+# Definning Author Custom Type
+type Author {
+    id: ID!
+    name: String!
+    country: String!
+    register_by: User!
+    books: [Book!]!
+}
+
+# Definning Book Custom Type
+type Book {
+    id: ID!
+    title: String!
+    description: String!
+    quantity: Int!
+    price: Int!
+    writted_by: Author!
+    register_by: User!
+
 }
