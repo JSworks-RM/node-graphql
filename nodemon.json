@@ -1,5 +1,0 @@
-{
-    "exec": "npm run env",
-    "watch": ["src/**"],
-    "ext": "js, graphql"
-}
