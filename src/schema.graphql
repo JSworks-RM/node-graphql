@@ -1,5 +1,5 @@
 type Query {
-    hello: String!
+    hello(name: String): String!
     quantity: Int!
     getUser: User!
 }
