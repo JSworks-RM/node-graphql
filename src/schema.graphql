@@ -65,4 +65,26 @@ type Mutation {
         country: String
         register_by: ID
     ): Author!
+
+    # ************* BOOK MUTATION ********************
+    createBook(
+        title: String!
+        description: String!
+        quantity: Int!
+        price: Int!
+        writted_by: ID! # Make refers to an Author
+        register_by: ID! # Make refers to an User
+    ): Book!
+
+    updateBook(
+        id: ID!
+        title: String
+        description: String
+        quantity: Int
+        price: Int
+        writted_by: ID
+        register_by: ID
+    ): Book!
+
+    deleteBook(id: ID!): Book!
 }

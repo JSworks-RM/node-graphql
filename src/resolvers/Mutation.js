@@ -69,6 +69,49 @@ const Mutation = {
 
         return { ...authorExist, ...data }
 
+    },
+    // ************* BOOK MUTATION ********************
+    createBook: (parent, args, { db }, info) => {
+        const book = {
+            id: uuidv4(),
+            ...args
+        }
+        db.books.push(book)
+
+        return book
+    },
+    updateBook: (parent, args, { db }, info) => {
+        const { id, ...data } = args
+        const bookExist = db.books.find(book => book.id === id)
+
+        if (!bookExist) {
+            throw new Error ('Book does not exist')
+        }
+
+        db.books = db.books.map(book => {
+            if (book.id === id) {
+                book = { ...book, ...data }
+                return book
+            }
+            return book
+        })
+
+        return { ...bookExist,  ...data }
+    },
+    deleteBook: (parent, { id }, { db }, info) => {
+        const bookExist = db.books.find(book => book.id === id)
+        if (!bookExist) {
+            throw new Error ('Book does not exist')
+        }
+
+        db.books = db.books.reduce((accumulator, book) => {
+            if (book.id !== id) {
+                accumulator.push(book)
+            }
+            return accumulator
+        }, [])
+
+        return bookExist
     }
 }
 
