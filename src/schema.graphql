@@ -36,6 +36,7 @@ type Book {
 
 # Mutation Type. Will Provide all the properties that it will can to mutate in our data source
 type Mutation {
+    # ************* USER MUTATION ********************
     createUser(
         name: String!
         lastName: String!
@@ -50,4 +51,18 @@ type Mutation {
         email: String
         password: String
     ): User! # This mutation return User Object
+
+    # ************* AUTHOR MUTATION ********************
+    createAuthor(
+        name: String!
+        country: String!
+        register_by: ID!
+    ): Author!
+
+    updateAuthor(
+        id: ID!
+        name: String
+        country: String
+        register_by: ID
+    ): Author!
 }
