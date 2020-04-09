@@ -3,11 +3,14 @@ import Query from './resolvers/Query'
 import Author from './resolvers/Author'
 import Book from './resolvers/Book'
 import db from './db' // Importing all db to add it within the context
+import Mutation from './resolvers/Mutation'
 
+// Resolver Object
 const resolvers = {
     Query,
     Author,
-    Book
+    Book,
+    Mutation
 }
 
 // Create an object called context which refers to the context

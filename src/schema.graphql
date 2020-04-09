@@ -11,6 +11,7 @@ type User {
     id: ID!
     name: String!
     lastName: String!
+    email: String! 
 }   
 
 # Definning Author Custom Type
@@ -31,5 +32,22 @@ type Book {
     price: Int!
     writted_by: Author!
     register_by: User!
+}
 
+# Mutation Type. Will Provide all the properties that it will can to mutate in our data source
+type Mutation {
+    createUser(
+        name: String!
+        lastName: String!
+        email: String!
+        password: String! # We only put it in mutation instead of User or query types to avoid to return it in queries
+    ): User! # This mutation return User Object
+
+    updateUser(
+        id: ID!
+        name: String
+        lastName: String
+        email: String
+        password: String
+    ): User! # This mutation return User Object
 }
